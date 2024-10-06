@@ -50,8 +50,10 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter{
 
         String username = loginDTO.getUsername();
         String password = loginDTO.getPassword();
-
-        System.out.println(username);
+        System.out.println("--------------------");
+        System.out.println("username : "+username);
+        System.out.println("password : "+password);
+        System.out.println("--------------------");
 
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
 
@@ -94,8 +96,10 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter{
     }
 
     @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) {
-        response.setStatus(401);
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException {
+        System.out.println("failed : "+failed.getMessage());
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.getWriter().write(failed.getMessage());
     }
 
     private Cookie createCookie(String key, String value) {
