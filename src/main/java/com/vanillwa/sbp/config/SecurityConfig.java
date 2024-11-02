@@ -4,6 +4,7 @@ import com.vanillwa.sbp.jwt.CustomLogoutFilter;
 import com.vanillwa.sbp.jwt.JWTFilter;
 import com.vanillwa.sbp.jwt.JWTUtil;
 import com.vanillwa.sbp.repository.RefreshRepository;
+import com.vanillwa.sbp.service.CustomUserDetailsService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +34,8 @@ public class SecurityConfig {
 	private final AuthenticationConfiguration authenticationConfiguration;
 	private final JWTUtil jwtUtil;
 	private final RefreshRepository refreshRepository;
+	private final CustomUserDetailsService customUserDetailsService;
+
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

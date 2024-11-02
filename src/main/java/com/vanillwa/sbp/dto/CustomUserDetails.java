@@ -26,6 +26,14 @@ public class CustomUserDetails implements UserDetails {
         return list;
     }
 
+    public Long getUserId(){
+        return userEntity.getUserId();
+    }
+
+    public String getNickname(){
+        return userEntity.getNickname();
+    }
+
     @Override
     public String getPassword() {
         return userEntity.getPassword();
